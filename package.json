@@ -1,0 +1,29 @@
+{
+  "name": "blogsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dioris-cpu/blogSite.git"
+  },
+  "keywords": [
+    "feet"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dioris-cpu/blogSite/issues"
+  },
+  "homepage": "https://github.com/Dioris-cpu/blogSite#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7"
+  }
+}
