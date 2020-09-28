@@ -1,3 +1,4 @@
+// REQUIRE DEPENDENCES
 const methodOverride = require('method-override');
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
@@ -11,6 +12,7 @@ app = express();
 mongoose.connect("mongodb://localhost/blogsite", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false, 
 });
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -89,7 +91,18 @@ app.get("/blogs/:id/edit", function (req, res) {
 
 // UPDATE ROUTE
 app.put('/blogs/:id', function(req, res){
-    res.send('UPDATE ROUTE!')
+  Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+    if (err) {
+      res.redirect("/blogs");
+    } else {
+      res.redirect("/blogs/" + req.params.id);
+    }
+  })
+})
+
+// DELETE ROUTE
+app.delete('/blogs/:id', function(req,res){
+  res.send('DESTORY ROUTE');
 })
 
 app.listen(PORT, function () {
