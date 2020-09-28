@@ -101,9 +101,18 @@ app.put('/blogs/:id', function(req, res){
 })
 
 // DELETE ROUTE
-app.delete('/blogs/:id', function(req,res){
-  res.send('DESTORY ROUTE');
-})
+app.delete("/blogs/:id", function(req, res) {
+  //destroy blog
+  Blog.findByIdAndRemove(req.params.id, function(err) {
+      if (err) {
+          res.redirect("/blogs");
+      }
+      else {
+          res.redirect("/blogs");
+      }
+  });
+  //redirect to index
+});
 
 app.listen(PORT, function () {
   console.log("server is running");
