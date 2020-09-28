@@ -1,3 +1,4 @@
+const methodOverride = require('method-override');
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
@@ -14,6 +15,7 @@ mongoose.connect("mongodb://localhost/blogsite", {
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 
 // MONGOOSE/MODEL CONFIG
 const blogSchema = new mongoose.Schema({
@@ -75,10 +77,20 @@ app.get("/blogs/:id", function (req, res) {
 
 // EDIT ROUTE
 
-
 app.get("/blogs/:id/edit", function (req, res) {
-   res.render('edit')
+  Blog.findById(req.params.id, function (err, foundBlog) {
+    if (err) {
+      res.redirect("/blogs");
+    } else {
+      res.render("edit", { blog: foundBlog });
+    }
   });
+});
+
+// UPDATE ROUTE
+app.put('/blogs/:id', function(req, res){
+    res.send('UPDATE ROUTE!')
+})
 
 app.listen(PORT, function () {
   console.log("server is running");
