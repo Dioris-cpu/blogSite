@@ -10,7 +10,7 @@ app = express();
 
 // APP CONFIG
 
-mongoose.connect("mongodb://localhost/blogsite", {
+mongoose.connect("mongodb+srv://admin-dioris:test1236@blogs.kizju.mongodb.net/blogsite", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false, 
