@@ -16,6 +16,9 @@
   ],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "14.9.0"
+  },
   "bugs": {
     "url": "https://github.com/Dioris-cpu/blogSite/issues"
   },
